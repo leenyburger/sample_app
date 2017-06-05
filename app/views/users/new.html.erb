@@ -1,4 +1,22 @@
 <%provide(:title, 'Sign up') %>
+<h1> Sign Up </h1>
 
-<h1>Sign up</h1>
-<p>This will be a signup page for new users. </p>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %> <!--Presence of the do keyword indicates that form_for takes a block with one variable-->
+      <%= f.label :name %>	<!-- Creates the HTML needed to make a labeled text field element appropriate for setting the name attribute of a user model -->
+      <%= f.text_field :name %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
