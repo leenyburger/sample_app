@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def new
-  	@user = User.new #Signup page is routed to "new" action.  Data will come from form 
+  	@user = User.new #Signup page is routed to "new" action.  Data will come from form
   end
 
   def show
@@ -9,13 +9,17 @@ class UsersController < ApplicationController
 
   def create
   	@user=User.new(user_params)
-  	  if @user.save
-        flash[:success] = "Welcome to the Sample App"
-        redirect_to @user 
-      else 
-        render 'new'
-  	  end
-  	end
+	  if @user.save
+      flash[:success] = "Welcome to the Sample App"
+      redirect_to @user
+    else
+      render 'new'
+	  end
+	end
+
+  def logged_in?
+    @current_user!=nil
+  end
 
 private
 
