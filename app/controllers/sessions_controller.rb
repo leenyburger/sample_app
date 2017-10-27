@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   	if user && user.authenticate(params[:session][:password])
   		#log in and redirect to show page
   		log_in user #From the sessions_helper, which was added to application_controller so is accessible everywhere.
-  		redirect_to user
+  		redirect_to user #which is redirect_to user_url(user)
   	else
   		flash.now[:danger] = 'Invalid email/password combination'
   		render 'new' #Rerendering a template with render doesn't count as a request
@@ -15,6 +15,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    log_out
+    redirect_to root_url
   end
 
 end
